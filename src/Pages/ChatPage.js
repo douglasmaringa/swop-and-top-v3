@@ -31,7 +31,7 @@ const ChatPage = () => {
                     <i className="bi bi-arrow-left"></i>
                 </div>
                 <div onClick={() => history.push('/')} className="create__brandName">
-                    <OlxLogo />
+                   <h3>Swap N Top</h3>
                 </div>
             </header>
             <div className="chatPage__main">

@@ -113,12 +113,30 @@ const Chat = () => {
             db.collection('chat').doc(`${chatId}`).collection('messages').add({
                 text: text,
                 createdAt: new Date(),
-                sender: user.uid
+                sender: user.uid,
+                email:user.email,
             }).then(
                 setText('')
             )
     }
 
+    const memory = ()=>{
+        console.log(messages)
+        db.collection('adminRecords').add({
+            messages:messages,
+            createdAt: new Date(),
+        }).then(
+            db.collection('chat').doc(`${chatId}`).collection('messages').add({
+                text: "FROM ADMIN Please bring the items you wish to trade to our offices in buluwayo address here and we will mediate the trade for you agree on a date here and come to our offices we are open mon-sat 8-4pm ",
+                createdAt: new Date(),
+                sender: user.uid,
+                email:user.email,
+            }).then(
+                setText('')
+            )
+        )
+        
+    }
     return (
         <div className="chat__main">
             {
@@ -168,6 +186,7 @@ const Chat = () => {
                                 {userNames.user1}
                             </h4>
                     }
+                    <button onClick={memory} style={{"marginLeft":'auto',padding:'10px',fontWeight:'bold',borderRadius:20}}>Finalize Trade</button>
                 </div>
             }
             {

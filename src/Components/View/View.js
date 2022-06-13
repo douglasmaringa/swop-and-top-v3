@@ -124,6 +124,8 @@ function View() {
             <p className="item__price">&#36; {data.price} </p>
             <span>{data.title}</span>
             <p>{data.subCategory}</p>
+            <p>I want to my {data.title} trade for</p>
+            <p>{data.exchange}</p>
             <span>{date}</span>
           </div>
           <div ref={copyRef} className="item__share">
@@ -134,6 +136,7 @@ function View() {
         <div className="item__moreInfo">
           <h5>Description</h5>
           <p>{data.description}</p>
+          
         </div>
         <div className="item__sellerDescription">
           <p>Seller description</p>

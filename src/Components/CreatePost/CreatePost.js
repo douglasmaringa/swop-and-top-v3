@@ -26,6 +26,8 @@ const CreatePost = ({ category, subCategory, setSubCategory, }) => {
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
     const priceRef = useRef(null);
+    const exchangeRef = useRef(null)
+
     //useHistory
     const history = useHistory();
     useEffect(() => {
@@ -56,6 +58,7 @@ const map=(evt)=>{
                 db.collection('products').add({
                     title: titleRef?.current.value,
                     description: descriptionRef?.current.value,
+                    exchange:exchangeRef?.current.value,
                     price: priceRef?.current.value,
                     lat: lat,
                     long: long,
@@ -87,6 +90,9 @@ const map=(evt)=>{
                 <h5>INCLUDE SOME DETAILS</h5>
                 <label htmlFor="">Ad Title*</label>
                 <input ref={titleRef} type="text" name="" id="" />
+                <br/>
+                <label htmlFor="">What do you want to trade in exchange for your item*</label>
+                <input ref={exchangeRef} type="text" name="" id="" />
                 <label >Description*</label>
                 <textarea ref={descriptionRef} name="" id="" cols="20" rows="3"></textarea>
             </div>

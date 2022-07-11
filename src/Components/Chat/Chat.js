@@ -8,6 +8,7 @@ const Chat = () => {
     const { user } = useContext(AuthContext);
     const { chatId } = useParams();
     const [text, setText] = useState('')
+    const [item, setItem] = useState('')
     const [userNames, setUserNames] = useState([]);
     const [userId, setUserId] = useState([]);
     const [userDetails, setUserDetails] = useState([]);
@@ -74,6 +75,7 @@ const Chat = () => {
                 user1: res.data()?.user1,
                 user2: res.data()?.user2
             })
+            setItem(res.data()?.item)
         })
         return () => {
 
@@ -127,7 +129,7 @@ const Chat = () => {
             createdAt: new Date(),
         }).then(
             db.collection('chat').doc(`${chatId}`).collection('messages').add({
-                text: "FROM ADMIN Please bring the items you wish to trade to our offices in buluwayo address here and we will mediate the trade for you agree on a date here and come to our offices we are open mon-sat 8-4pm ",
+                text: "FROM ADMIN Thank you for using Swap&Top, we would like to hear from you so that we can continue to improve the platform please share your feedback",
                 createdAt: new Date(),
                 sender: user.uid,
                 email:user.email,
@@ -136,7 +138,10 @@ const Chat = () => {
             )
         )
         
+    
     }
+
+   // console.log(messages)
     return (
         <div className="chat__main">
             {
@@ -186,7 +191,8 @@ const Chat = () => {
                                 {userNames.user1}
                             </h4>
                     }
-                    <button onClick={memory} style={{"marginLeft":'auto',padding:'10px',fontWeight:'bold',borderRadius:20}}>Finalize Trade</button>
+                    
+                    <button onClick={memory} style={{"marginLeft":'auto',padding:'10px',fontWeight:'bold',borderRadius:20}}>Finalize Trade with {item}</button>
                 </div>
             }
             {

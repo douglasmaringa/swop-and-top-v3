@@ -54,7 +54,7 @@ const Cards = ({ product }) => {
           <img src={product.url} alt="" />
         </div>
         <div className="card__content">
-          <p className="card__rate">&#36;  {product.price}</p>
+          <p className="card__rate">Valued at &#36; {product.price}</p>
           <span className="card__kilometer">{truncate(product.subCategory, 24)}</span>
           <p className="card__name">{truncate(product.title, 30)}</p>
         </div>

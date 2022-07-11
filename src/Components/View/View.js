@@ -98,7 +98,8 @@ function View() {
         db.collection('chat').doc(`${chatId}`).set({
           users: [`${user.uid}`, `${sellerDetails.id}`],
           user1: `${userDetails.username}`,
-          user2: `${sellerDetails.username}`
+          user2: `${sellerDetails.username}`,
+          item:data.title
         }).then(history.push(`/chat/${chatId}`))
       } else {
         history.push(`/chat/${docId[0]}`)
@@ -153,15 +154,12 @@ function View() {
             </p>
             <i className="bi bi-chevron-right"></i>
           </div>
-          <p className="item__sellerContactNum">Contact No: <ReactWhatsapp style={{"borderRadius":"80%","padding":"0px"}} number={"0774450965"} message="Hello World!!!">
-                       <span className=''><i class="bi bi-whatsapp"></i></span> 
-             </ReactWhatsapp>
-                   {sellerDetails?.phone} </p>
+          
           {
             (user?.uid === sellerDetails.id) ?
               <button onClick={handleChatClick} disabled className="item__chatBtn">Ask questions your self</button>
               :
-              <button onClick={handleChatClick} className="item__chatBtn">Chat with seller</button>
+              <button onClick={handleChatClick} className="item__chatBtn">Chat to Buyer</button>
           }
          
           

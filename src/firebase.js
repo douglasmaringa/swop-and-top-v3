@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 
+
 const firebaseConfig = {
    apiKey: "AIzaSyALZJ8JR0JPWvfrUJzm43tF6DHCe9MA4n4",
   authDomain: "swapntop-7b24d.firebaseapp.com",
@@ -15,6 +16,7 @@ export const Firebase = firebase.initializeApp(firebaseConfig);
 const db = Firebase.firestore();
 const auth = firebase.auth();
 const firebasestorage = Firebase.storage();
+const analytics = Firebase.analytics();
 
 export {firebasestorage};
 export { auth };

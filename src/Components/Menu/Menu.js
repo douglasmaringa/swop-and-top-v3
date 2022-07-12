@@ -63,7 +63,7 @@ const Menu = () => {
                   <div className="profileuncompleted__div"></div>
                   <div className="profileuncompleted__div"></div>
                 </div>
-                <p>OLX is built on trust. Help other people get to know you. Tell them about the things you like. </p>
+                <p>SwapNTop is built on trust. Help other people get to know you. Tell them about the things you like. </p>
               </div>
               <div onClick={() => history.push('/myads')} className="menu__section">
                 <i className="bi bi-files"></i>
@@ -87,7 +87,7 @@ const Menu = () => {
               </div>
               <div className="menu__section horizontal__line">
                 <i className="bi bi-download"></i>
-                <h5>Install OLX Lite app</h5>
+                <h5>Install SwapNTop app</h5>
               </div>
               <div onClick={() => {
                 auth.signOut()

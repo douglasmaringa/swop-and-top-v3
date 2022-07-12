@@ -26,14 +26,14 @@ function Footer() {
           <span className="heading">POPULAR LOCATIONS</span>
           <span>Harare</span>
           <span>Gweru</span>
-          <span>Buluwayo</span>
+          <span>Bulawayo</span>
           <span>Victoria Falls</span>
         </div>
         <div className="footer__cards" >
           <span className="heading">TRENDING LOCATIONS</span>
           <span>Harare</span>
           <span>Gweru</span>
-          <span>Buluwayo</span>
+          <span>Bulawayo</span>
           <span>Victoria Falls</span>
         </div>
         <div className="footer__cards">

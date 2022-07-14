@@ -47,6 +47,7 @@ const CreatePost = ({ category, subCategory, setSubCategory, }) => {
 
 
 const map=(evt)=>{
+ alert("location saved")
   setLat(evt.lngLat[1]);
   setLong(evt.lngLat[0]);
 }
@@ -126,12 +127,7 @@ const map=(evt)=>{
                 <label>City</label>
                 <input value={city} onChange={(e)=>{setCity(e.target.value)}} type="text" name="" id="" />
            
-                <label>Latitude</label>
-                <input value={lat} onChange={(e)=>{setLat(e.target.value)}} type="text" name="" id="" />
-           
-            <label>Longitude</label>
-                <input value={long} onChange={(e)=>{setLong(e.target.value)}} type="text" name="" id="" />
-           
+               
                 </div>
                 </div>
             </div>

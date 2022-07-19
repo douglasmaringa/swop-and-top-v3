@@ -11,6 +11,7 @@ import Map from './Map';
 
 function View() {
   const [data, setData] = useState({})
+  const [images, setImages] = useState("")
   const { productId } = useParams();
   const location = useLocation();
   const [sellerDetails, setSellerDetails] = useState({});
@@ -29,6 +30,7 @@ function View() {
     db.collection('products').doc(`${productId}`).get()
       .then(snapshot => {
         setData(snapshot.data());
+        setImages(snapshot.data().url);
         setDate(snapshot.data().date.toDate().toLocaleString('en-IN', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true, day: 'numeric', month: 'numeric', year: 'numeric' }))
       });
   }, [productId])
@@ -108,18 +110,32 @@ function View() {
       alert('please login')
     }
   }
+ 
+  const next = (img)=>{
+    if(data.images.length>1){
+    setImages(img)
+    }
+  }
+  console.log(images)
 
   return (
 
     <div className="item__container">
       <span>{data.category + ' / ' + data.subCategory}</span>
       <div className="item__parentDiv">
-        <div className="item__img">
+        <div className="item__img" style={{"display":"grid","gridTemplateColumns":"1fr 60px"}}>
+          
           <img
-            src={data.url}
+            src={images}
             alt="error loading"
           />
-        </div>
+          {
+            data?.images?.length > 0?(<><button className="item__chatBtn" style={{"height":"40px","width":"60px"}} onClick={()=>{next(data?.images[0])}}>Next</button>
+            </>):(<></>)
+          }
+         
+           </div>
+       
         <div className="item__productDescription">
           <div>
             <p className="item__price">&#36; {data.price} </p>
@@ -134,11 +150,13 @@ function View() {
             <div className="item__tooltipText">{copy}</div>
           </div>
         </div>
+        
         <div className="item__moreInfo">
           <h5>Description</h5>
           <p>{data.description}</p>
           
         </div>
+       
         <div className="item__sellerDescription">
           <p>Seller description</p>
           <div className="item__sellerImageName">

@@ -14,6 +14,8 @@ const CreatePost = ({ category, subCategory, setSubCategory, }) => {
     const { user } = useContext(AuthContext);
     //useState
     const [image, setImage] = useState();
+    const [image2, setImage2] = useState("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAACBCAMAAABq3aECAAAAPFBMVEX///+hoaH6+vrz8/OVlZXPz8+oqKjLy8ubm5vj4+O3t7eenp6xsbGYmJilpaXu7u7V1dW/v7/FxcXc3NwVeLpjAAABrElEQVR4nO3Z23KDIBRA0YCRgIiY5P//td5qjTItZjI9POz11Kals4c5QWMvFwAAAAAAAAAAAAAA/omu3qCFYs31DSHKxCplTlPeycR24fyaxorFnh9AYnPMsfp5f+S/aWRjdRusDY/cNbKxN6sGITdBNLYyfoz198w1srGdmmKbzDWisbqddtbmDq3szD79UOt94hDru8R2Cx9dvQmhSZxdvVX2WCt9UdDJW6lqPCVsvX9ZOjZpmeXDPVaRsQ87nxKmen29xFh3VbP92BYYG436ZvuXnxQYOw/szL+MbSGx0a3f1UFtYs12TRmxLlzb5c3k1Au7vW8oIjZ2Xvl2/lr5Xe1mbIuInaY0TNeAZtc6TMLP+VVC7G05VoeS2u5bhy1ff7GAWLdspleXGA6t25sy+Vi9Tqlv2sMQTLXPYmI3U+qTrUp1VSGxiSlNjG0ZsTGjdb1bFI6t0lN63FtXQOw9a2PHk0KLx/aZrcvHddHYuL+2/mIcW9HYtjvxcLaLkrHD9eAcwVh/O81IPfn2Npz/l0L2I7wPc/Ub+r//LgAAAAAAAAAAAAAAn/EF+jsXk2r5g4wAAAAASUVORK5CYII=");
+    const [image3, setImage3] = useState("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAACBCAMAAABq3aECAAAAPFBMVEX///+hoaH6+vrz8/OVlZXPz8+oqKjLy8ubm5vj4+O3t7eenp6xsbGYmJilpaXu7u7V1dW/v7/FxcXc3NwVeLpjAAABrElEQVR4nO3Z23KDIBRA0YCRgIiY5P//td5qjTItZjI9POz11Kals4c5QWMvFwAAAAAAAAAAAAAA/omu3qCFYs31DSHKxCplTlPeycR24fyaxorFnh9AYnPMsfp5f+S/aWRjdRusDY/cNbKxN6sGITdBNLYyfoz198w1srGdmmKbzDWisbqddtbmDq3szD79UOt94hDru8R2Cx9dvQmhSZxdvVX2WCt9UdDJW6lqPCVsvX9ZOjZpmeXDPVaRsQ87nxKmen29xFh3VbP92BYYG436ZvuXnxQYOw/szL+MbSGx0a3f1UFtYs12TRmxLlzb5c3k1Au7vW8oIjZ2Xvl2/lr5Xe1mbIuInaY0TNeAZtc6TMLP+VVC7G05VoeS2u5bhy1ff7GAWLdspleXGA6t25sy+Vi9Tqlv2sMQTLXPYmI3U+qTrUp1VSGxiSlNjG0ZsTGjdb1bFI6t0lN63FtXQOw9a2PHk0KLx/aZrcvHddHYuL+2/mIcW9HYtjvxcLaLkrHD9eAcwVh/O81IPfn2Npz/l0L2I7wPc/Ub+r//LgAAAAAAAAAAAAAAn/EF+jsXk2r5g4wAAAAASUVORK5CYII=");
     const [userDetails, setUserDetails] = useState([]);
     const [place, setPlace] = useState({});
 
@@ -21,6 +23,7 @@ const CreatePost = ({ category, subCategory, setSubCategory, }) => {
   const[long,setLong]=useState("")
   const[city,setCity]=useState("")
   
+  const[load,setLoad]=useState(false)
 
     //useRefs
     const titleRef = useRef(null);
@@ -52,6 +55,28 @@ const map=(evt)=>{
   setLong(evt.lngLat[0]);
 }
 
+const upload = (e)=>{
+     setLoad(true)
+    firebasestorage.ref(`/image/${uuidv4()}-${e.target.files[0]?.name}`).put(e.target.files[0]).then(({ ref }) => {
+        ref.getDownloadURL().then((url) => {
+            setImage2(url)
+            setLoad(false)
+        })
+    })
+    
+}
+
+const upload2 = (e)=>{
+    setLoad(true)
+    firebasestorage.ref(`/image/${uuidv4()}-${e.target.files[0]?.name}`).put(e.target.files[0]).then(({ ref }) => {
+        ref.getDownloadURL().then((url) => {
+            setImage3(url)
+            setLoad(false)
+        })
+    })
+   
+}
+
     //functions
     const handleSubmit = () => {
         firebasestorage.ref(`/image/${uuidv4()}-${image?.name}`).put(image).then(({ ref }) => {
@@ -71,6 +96,7 @@ const map=(evt)=>{
                     date: new Date(),
                     phone:userDetails.phone,
                     username: userDetails.username,
+                    images:[image2,image3]
                    
                 });
                 alert('Ad Posted Successfully')
@@ -78,7 +104,7 @@ const map=(evt)=>{
             })
         })
     }
-    console.log(place)
+    console.log(image2)
     
     return (
         <div className="post__container">
@@ -107,6 +133,22 @@ const map=(evt)=>{
                 <img width="200px" max-height="400px" src={image && URL.createObjectURL(image)} alt="" />
                 <div class="custom-file">
                     <input type="file" onChange={(e) => setImage(e.target.files[0])} class="custom-file-input" id="inputGroupFile02" />
+                    <label className="custom-file-label" htmlfor="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                </div>
+<br/>            
+<img width="200px" max-height="400px" src={image2} alt="" />
+               
+                <div class="custom-file">
+                    <input type="file" onChange={(e) => upload(e)} class="custom-file-input" id="inputGroupFile02" />
+                    <label className="custom-file-label" htmlfor="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                    {load?(<>loading...</>):(<></>)}
+
+                </div>
+               <br/>
+                <img width="200px" max-height="400px" src={image3} alt="" />
+               
+                <div class="custom-file">
+                    <input type="file" onChange={(e) => upload2(e)} class="custom-file-input" id="inputGroupFile02" />
                     <label className="custom-file-label" htmlfor="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
                 </div>
             </div>

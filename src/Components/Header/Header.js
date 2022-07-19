@@ -46,7 +46,7 @@ function Header() {
     <div className="header__main">
       <div onClick={() => history.push('/')} className="brandName">
      <img src="https://scontent.fhre2-2.fna.fbcdn.net/v/t39.30808-6/291863878_101470922632947_2557934023201945639_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=rl0fNBfCIyUAX9pk5bb&_nc_ht=scontent.fhre2-2.fna&oh=00_AT9KgWt_nN7nleytSNNXnfJoAVcucEXgjeBAP8FEIXJfdw&oe=62D19108" width={40} alt="" />
- 
+ Home
       </div>
       <form className="placeSearch" onSubmit={handleSearch} action="">
        

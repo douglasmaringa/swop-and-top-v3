@@ -126,7 +126,9 @@ const Chat = () => {
                 (text !== '') &&
             db.collection('notifications').add({
                 newMsg:true,
-                newMsgFrom:otherPreson.id
+                newMsgFrom:otherPreson.id,
+                username:otherPreson.username,
+                chatId:chatId
             }).then(
                 setText('')
                 

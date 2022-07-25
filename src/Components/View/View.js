@@ -128,8 +128,8 @@ function View() {
           <img
             src={images}
             alt="error loading"
-            width="100%"
-            height="50%"
+           width="100%"
+           style={{backgroundSize:"cover"}}
           />
           </div>
           <div>

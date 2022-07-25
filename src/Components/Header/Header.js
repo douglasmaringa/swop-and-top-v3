@@ -68,11 +68,11 @@ function Header() {
   const toggleModal = ()=>{
     setShowModal(!showModal)
   }
-  const seen = (id)=>{
+  const seen = (id,chatId)=>{
     
     db.collection('notifications').doc(`${id}`).delete()
     .then(
-      alert("seen")
+      history.push(`/chat/${chatId}`)
   )
   //history.push("/")
   }
@@ -123,13 +123,21 @@ function Header() {
                                         {
                                            showModal?(<><div class="modal-footer-small">
                                            <div class="ui-modal-body">
-                                           <button style={{width:"50px",marginLeft:"auto"}} onClick={()=>{toggleModal()}}>close</button>
-                                              <h1>Notifications</h1>
+                                           <button style={{color:"white",fontWeight:"700",width:"50px",marginLeft:"auto",backgroundColor:"#2196F3"}} onClick={()=>{toggleModal()}}>close</button>
+                                              <h5 style={{marginLeft:"10px",marginTop:"20px"}}>Notifications</h5>
                                                {
                                                 notifications?.map((e)=>(
                                                   <>
-                                                   <h5>New Message From {e.newMsgFrom}</h5><button onClick={()=>{seen(e.id)}} style={{borderRadius:"100%",padding:"10px"}}>Seen</button>
-                                                  </>
+                                                  <div class="card">
+  
+                                                    <div class="container" style={{display:"flex"}}>
+                                                        
+                                                         <h4 style={{fontSize:"18px"}}>New Message From {e.username}</h4>
+                                                         <button onClick={()=>{seen(e.id,e.chatId)}} style={{borderRadius:"20%",height:"30px",width:"100px",marginLeft:"10px",backgroundColor:"#2196F3",color:"white",fontWeight:"700",marginTop:"7px"}}>View</button>
+                                                
+                                                          </div>
+                                                            </div>
+                                                     </>
                                                 ))
                                                }
                                            </div>

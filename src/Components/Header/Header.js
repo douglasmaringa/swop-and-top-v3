@@ -9,7 +9,7 @@ import { useHistory, useLocation } from 'react-router';
 import { AuthContext } from '../../store/Context';
 import Menu from '../Menu/Menu';
 import Login from '../Login/Login';
-
+import db from "../../firebase";
 
 
 
@@ -20,14 +20,38 @@ function Header() {
   const location = useLocation();
   const [searchInput, setSearchInput] = useState('');
   const [locationSearch, setLocationSearch] = useState('');
-
+  const[notifications,setNotifications]=useState(false)
+  const[showModal,setShowModal]=useState([])
 
   useEffect(() => {
     if (location?.state?.from === 'create') {
       setLoginPopOn(true)
     }
+
+   
   }, [location?.state?.from])
 
+  useEffect(() => {
+    if(user){
+    db.collection('notifications').where("newMsgFrom","==",user?.uid).onSnapshot(snapshot => {
+      const allMessages = snapshot.docs.map((message) => {
+          return {
+              ...message.data(),
+              id: message.id,
+             }
+      })
+      allMessages.map((e)=>{
+        if(e.newMsg == true){
+          setNotifications(allMessages)
+        }
+      })
+     
+  })
+    return () => {
+
+    }
+  }
+}, [ user])
 
   const handleSellClick = () => {
     (user ? history.push('/create') : setLoginPopOn(true))
@@ -41,6 +65,17 @@ function Header() {
     history.push(`/search/search?${searchInput} ${locationSearch}`)
   }
 
+  const toggleModal = ()=>{
+    setShowModal(!showModal)
+  }
+  const seen = (id)=>{
+    
+    db.collection('notifications').doc(`${id}`).delete()
+    .then(
+      alert("seen")
+  )
+  }
+  console.log(user?.uid)
 
   return (
     <div className="header__main">
@@ -78,9 +113,35 @@ function Header() {
       {
         user &&
         <>
-          <i className="bi bi-bell header__notification"></i>
-          <i onClick={() => history.push('/chat/chatid')} className="bi bi-chat"></i>
-        </>
+
+           
+{
+            notifications?(<>
+              <i onClick={toggleModal} style={{color:"red"}} className="bi bi-bell header__notification"></i>
+                                       
+                                        {
+                                           showModal?(<><div class="modal-footer-small">
+                                           <div class="ui-modal-body">
+                                           <button style={{width:"50px",marginLeft:"auto"}} onClick={()=>{toggleModal()}}>close</button>
+                                              <h1>Notifications</h1>
+                                               {
+                                                notifications?.map((e)=>(
+                                                  <>
+                                                   <h5>New Message From {e.newMsgFrom}</h5><button onClick={()=>{seen(e.id)}} style={{borderRadius:"100%",padding:"10px"}}>Seen</button>
+                                                  </>
+                                                ))
+                                               }
+                                           </div>
+                                         </div></>):(<></>)
+                                        }
+            </>):(<>
+              <i className="bi bi-bell header__notification"></i>
+        
+            </>)
+          }
+           <i onClick={() => history.push('/chat/chatid')} className="bi bi-chat"></i>
+ 
+                </>
       }
       <div className="userSection">
         {user ?

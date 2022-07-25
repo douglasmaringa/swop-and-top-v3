@@ -18,6 +18,7 @@ const Chat = () => {
     const history = useHistory();
     const [loading, setLoading] = useState(false);
     const [otherPreson, setOtherPreson] = useState();
+    
 
     //fetching user IDs from chat
     useEffect(() => {
@@ -54,6 +55,8 @@ const Chat = () => {
             })
             setMessages(allMessages)
         })
+
+       
         return () => {
 
         }
@@ -117,8 +120,17 @@ const Chat = () => {
                 createdAt: new Date(),
                 sender: user.uid,
                 email:user.email,
+                
+            }).then(
+               // setText('')
+                (text !== '') &&
+            db.collection('notifications').add({
+                newMsg:true,
+                newMsgFrom:otherPreson.id
             }).then(
                 setText('')
+                
+            )
             )
     }
 
@@ -141,7 +153,7 @@ const Chat = () => {
     
     }
 
-   // console.log(messages)
+  // console.log(otherPreson.id)
     return (
         <div className="chat__main">
             {

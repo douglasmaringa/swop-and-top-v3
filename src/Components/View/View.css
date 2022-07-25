@@ -229,3 +229,8 @@
     grid-row: 5;
   }
 }
+
+.img-selector:hover{
+  border: #002f34 solid;
+  border-width: 10px;
+}

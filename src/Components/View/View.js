@@ -123,17 +123,31 @@ function View() {
     <div className="item__container">
       <span>{data.category + ' / ' + data.subCategory}</span>
       <div className="item__parentDiv">
-        <div className="item__img" style={{"display":"grid","gridTemplateColumns":"1fr 60px"}}>
-          
+        <div className="item__img" style={{"display":"grid","gridTemplateColumns":"1fr 100px"}}>
+          <div>
           <img
             src={images}
             alt="error loading"
+            width="100%"
+            height="75%"
           />
+          </div>
+          <div>
           {
-            data?.images?.length > 0?(<><button className="item__chatBtn" style={{"height":"40px","width":"60px"}} onClick={()=>{next(data?.images[0])}}>Next</button>
+            data?.images?.length > 0?(<>
+            {data?.images.map((e)=>(
+              <div onClick={()=>{setImages(e)}} className='img-selector' style={{marginLeft:"10px",cursor:"pointer"}}>
+              <img
+            src={e}
+            width={100}
+            height={100}
+            alt="error loading"
+          />
+              </div>
+            ))}
             </>):(<></>)
           }
-         
+          </div>
            </div>
        
         <div className="item__productDescription">

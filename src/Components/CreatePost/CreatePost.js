@@ -17,7 +17,7 @@ const CreatePost = ({ category, subCategory, setSubCategory, }) => {
     const [image2, setImage2] = useState("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAACBCAMAAABq3aECAAAAPFBMVEX///+hoaH6+vrz8/OVlZXPz8+oqKjLy8ubm5vj4+O3t7eenp6xsbGYmJilpaXu7u7V1dW/v7/FxcXc3NwVeLpjAAABrElEQVR4nO3Z23KDIBRA0YCRgIiY5P//td5qjTItZjI9POz11Kals4c5QWMvFwAAAAAAAAAAAAAA/omu3qCFYs31DSHKxCplTlPeycR24fyaxorFnh9AYnPMsfp5f+S/aWRjdRusDY/cNbKxN6sGITdBNLYyfoz198w1srGdmmKbzDWisbqddtbmDq3szD79UOt94hDru8R2Cx9dvQmhSZxdvVX2WCt9UdDJW6lqPCVsvX9ZOjZpmeXDPVaRsQ87nxKmen29xFh3VbP92BYYG436ZvuXnxQYOw/szL+MbSGx0a3f1UFtYs12TRmxLlzb5c3k1Au7vW8oIjZ2Xvl2/lr5Xe1mbIuInaY0TNeAZtc6TMLP+VVC7G05VoeS2u5bhy1ff7GAWLdspleXGA6t25sy+Vi9Tqlv2sMQTLXPYmI3U+qTrUp1VSGxiSlNjG0ZsTGjdb1bFI6t0lN63FtXQOw9a2PHk0KLx/aZrcvHddHYuL+2/mIcW9HYtjvxcLaLkrHD9eAcwVh/O81IPfn2Npz/l0L2I7wPc/Ub+r//LgAAAAAAAAAAAAAAn/EF+jsXk2r5g4wAAAAASUVORK5CYII=");
     const [image3, setImage3] = useState("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAACBCAMAAABq3aECAAAAPFBMVEX///+hoaH6+vrz8/OVlZXPz8+oqKjLy8ubm5vj4+O3t7eenp6xsbGYmJilpaXu7u7V1dW/v7/FxcXc3NwVeLpjAAABrElEQVR4nO3Z23KDIBRA0YCRgIiY5P//td5qjTItZjI9POz11Kals4c5QWMvFwAAAAAAAAAAAAAA/omu3qCFYs31DSHKxCplTlPeycR24fyaxorFnh9AYnPMsfp5f+S/aWRjdRusDY/cNbKxN6sGITdBNLYyfoz198w1srGdmmKbzDWisbqddtbmDq3szD79UOt94hDru8R2Cx9dvQmhSZxdvVX2WCt9UdDJW6lqPCVsvX9ZOjZpmeXDPVaRsQ87nxKmen29xFh3VbP92BYYG436ZvuXnxQYOw/szL+MbSGx0a3f1UFtYs12TRmxLlzb5c3k1Au7vW8oIjZ2Xvl2/lr5Xe1mbIuInaY0TNeAZtc6TMLP+VVC7G05VoeS2u5bhy1ff7GAWLdspleXGA6t25sy+Vi9Tqlv2sMQTLXPYmI3U+qTrUp1VSGxiSlNjG0ZsTGjdb1bFI6t0lN63FtXQOw9a2PHk0KLx/aZrcvHddHYuL+2/mIcW9HYtjvxcLaLkrHD9eAcwVh/O81IPfn2Npz/l0L2I7wPc/Ub+r//LgAAAAAAAAAAAAAAn/EF+jsXk2r5g4wAAAAASUVORK5CYII=");
     const [userDetails, setUserDetails] = useState([]);
-    const [place, setPlace] = useState({});
+    const [exchange, setExchange] = useState("");
 
     const[lat,setLat]=useState("")
   const[long,setLong]=useState("")
@@ -84,7 +84,7 @@ const upload2 = (e)=>{
                 db.collection('products').add({
                     title: titleRef?.current.value,
                     description: descriptionRef?.current.value,
-                    exchange:exchangeRef?.current.value,
+                    exchange:exchange,
                     price: priceRef?.current.value,
                     lat: lat,
                     long: long,
@@ -96,7 +96,7 @@ const upload2 = (e)=>{
                     date: new Date(),
                     phone:userDetails.phone,
                     username: userDetails.username,
-                    images:[image2,image3]
+                    images:[url,image2,image3]
                    
                 });
                 alert('Ad Posted Successfully')
@@ -104,7 +104,7 @@ const upload2 = (e)=>{
             })
         })
     }
-    console.log(image2)
+    console.log(exchange)
     
     return (
         <div className="post__container">
@@ -119,7 +119,13 @@ const upload2 = (e)=>{
                 <input ref={titleRef} type="text" name="" id="" />
                 <br/>
                 <label htmlFor="">What do you want to trade in exchange for your item*</label>
-                <input ref={exchangeRef} type="text" name="" id="" />
+                <select onChange={(e)=>{setExchange(e.target.value)}} id="cars">
+                <option value="---">----------</option>
+  <option value="swap">Straight Swap</option>
+  <option value="cash">Cash Only</option>
+  <option value="swapntop">Swap And Top</option>
+</select>
+                <br/>
                 <label >Description*</label>
                 <textarea ref={descriptionRef} name="" id="" cols="20" rows="3"></textarea>
             </div>

@@ -43,10 +43,31 @@ const Cards = ({ product }) => {
   const truncate = (string, n) => {
     return string && string.length > n ? string.substr(0, n - 1) + '...' : string;
 }
+console.log(product.exchange)
 
   return (
     <div key={product.id} className="card__container" >
       <div className="card__favorite" onClick={favClick} >
+      {(() => {
+        switch (product.exchange) {
+          case "cash":   return (<>
+          <i style={{marginRight:"auto",backgroundColor:"#0a2578",color:"white",paddingLeft:"10px",paddingRight:"10px"}} className={""}>Cash</i>
+                       </>);
+        case "swap":   return (<>
+            <i style={{marginRight:"auto",backgroundColor:"#d9ca25",color:"white",paddingLeft:"10px",paddingRight:"10px"}} className={""}>Swap</i>
+                        </>);
+          case "swapntop":   return (<>
+            <i style={{marginRight:"auto",backgroundColor:"#25d99a",color:"white",paddingLeft:"10px",paddingRight:"10px"}} className={""}>Swap&Top</i>
+                        </>);
+            
+            
+          default:      return (<>
+          
+             
+            </>);
+        }
+      })()}                
+       
         <i className={"bi bi-heart-fill card__heart"}></i>
       </div>
       <div className="card__contents" onClick={() => history.push(`/item/${product.id}`)}>

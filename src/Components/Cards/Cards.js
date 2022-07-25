@@ -59,7 +59,9 @@ console.log(product.exchange)
           case "swapntop":   return (<>
             <i style={{marginRight:"auto",backgroundColor:"#25d99a",color:"white",paddingLeft:"10px",paddingRight:"10px"}} className={""}>Swap&Top</i>
                         </>);
-            
+             case "offer":   return (<>
+              <i style={{marginRight:"auto",backgroundColor:"#911423",color:"white",paddingLeft:"10px",paddingRight:"10px"}} className={""}>Make Me An Offer</i>
+                          </>);
             
           default:      return (<>
           

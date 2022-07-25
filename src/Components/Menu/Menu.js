@@ -3,12 +3,14 @@ import { useHistory } from 'react-router';
 import Arrow from '../../assets/Arrow';
 import db, { auth } from '../../firebase';
 import { AuthContext } from '../../store/Context';
+import ResetLogin from '../Login/ResetLogin';
 import "./Menu.css";
 
 const Menu = () => {
   const { user } = useContext(AuthContext)
   const [popOn, setPopOn] = useState(false);
   const [userDetails, setUserDetails] = useState([])
+  
   let menuRef = useRef();
   const history = useHistory();
   useEffect(() => {
@@ -28,6 +30,8 @@ const Menu = () => {
       }
     }
   })
+
+
   return (
   <div className="menu">
       <div className="user__present">
@@ -68,7 +72,12 @@ const Menu = () => {
               <div onClick={() => history.push('/myads')} className="menu__section">
                 <i className="bi bi-files"></i>
                 <h5>My Ads</h5>
+              
               </div>
+              <div onClick={() => history.push('/reset')} className="menu__section">
+                <i className="bi bi-files"></i>
+                <h5>Reset Password</h5>
+               </div>
               <div className="menu__section">
                 <i className="bi bi-briefcase"></i>
                 <h5>Buy Business Package</h5>

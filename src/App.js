@@ -20,6 +20,7 @@ import MyProfilePage from './Pages/MyProfilePage';
 import EditPage from './Pages/EditPage';
 import SellerProfile from './Pages/SellerProfile';
 import EditPostPage from './Pages/EditPostPage';
+import ResetLogin from './Components/Login/ResetLogin';
 
 
 
@@ -46,6 +47,7 @@ function App() {
           <Route path='/chat/:chatId' component={ChatPage} />
           <Route path='/myprofile' component={MyProfilePage} />
           <Route path='/editprofile/:editInfo' component={EditPage} />
+          <Route path='/reset' component={ResetLogin} />
           <Route path='/profile/:profileId' component={SellerProfile} />
           <Route path='/editpost/:postId' component={EditPostPage} />
           <Route component={PageNotFound} path='*' />

@@ -124,6 +124,7 @@ const upload2 = (e)=>{
   <option value="swap">Straight Swap</option>
   <option value="cash">Cash Only</option>
   <option value="swapntop">Swap And Top</option>
+  <option value="offer">Make Me An Offer</option>
 </select>
                 <br/>
                 <label >Description*</label>

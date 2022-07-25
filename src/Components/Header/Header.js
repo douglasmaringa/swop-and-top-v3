@@ -9,6 +9,7 @@ import { useHistory, useLocation } from 'react-router';
 import { AuthContext } from '../../store/Context';
 import Menu from '../Menu/Menu';
 import Login from '../Login/Login';
+import ResetLogin from '../Login/ResetLogin';
 import db from "../../firebase";
 
 
@@ -17,11 +18,14 @@ function Header() {
   const { user } = useContext(AuthContext);
   const history = useHistory();
   const [loginPopOn, setLoginPopOn] = useState(false);
+
+ 
   const location = useLocation();
   const [searchInput, setSearchInput] = useState('');
   const [locationSearch, setLocationSearch] = useState('');
   const[notifications,setNotifications]=useState(false)
   const[showModal,setShowModal]=useState([])
+  const[showModal1,setShowModal1]=useState([])
 
   useEffect(() => {
     if (location?.state?.from === 'create') {
@@ -60,6 +64,8 @@ function Header() {
   const handleLogin = () => {
     setLoginPopOn(!loginPopOn);
   }
+
+  
   const handleSearch = (e) => {
     e.preventDefault();
     history.push(`/search/search?${searchInput} ${locationSearch}`)
@@ -105,6 +111,7 @@ function Header() {
           <div onClick={() => history.push('/myads')} className="menu__section">
                 <i className="bi bi-files"></i>
                 <h5>My Ads</h5>
+
               </div>
           </>):(<></>)
         }

@@ -129,7 +129,7 @@ function View() {
             src={images}
             alt="error loading"
             width="100%"
-            height="75%"
+            height="50%"
           />
           </div>
           <div>

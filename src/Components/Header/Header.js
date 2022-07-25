@@ -74,6 +74,7 @@ function Header() {
     .then(
       alert("seen")
   )
+  //history.push("/")
   }
   console.log(user?.uid)
 

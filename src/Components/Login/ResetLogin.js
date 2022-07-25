@@ -132,18 +132,18 @@ function ResetLogin({ setLoginPopOn }) {
           <button onClick={handleClick} className="login__button">
             {
               !isSignUp ?
-                "Login"
+                "Reset Password"
                 :
-                "SignUp"
+                "Reset Password"
             }
           </button>
         </form>
         <p className="signup__button" onClick={() => setIsSignUp(!isSignUp)}>
           {
             !isSignUp ?
-              "New to Swap N Top? Signup"
+              ""
               :
-              "Already a user? Login"
+              ""
           }
         </p>
       </div>

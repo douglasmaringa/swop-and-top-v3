@@ -9,6 +9,7 @@ const Chat = () => {
     const { chatId } = useParams();
     const [text, setText] = useState('')
     const [item, setItem] = useState('')
+    const [itemId, setItemId] = useState('')
     const [userNames, setUserNames] = useState([]);
     const [userId, setUserId] = useState([]);
     const [userDetails, setUserDetails] = useState([]);
@@ -79,6 +80,7 @@ const Chat = () => {
                 user2: res.data()?.user2
             })
             setItem(res.data()?.item)
+            setItemId(res.data()?.itemId)
         })
         return () => {
 
@@ -151,11 +153,15 @@ const Chat = () => {
                 setText('')
             )
         )
+
+        db.collection('products').doc(itemId).update({
+             traded:true
+           })
         
     
     }
 
-  // console.log(otherPreson.id)
+  console.log(item)
     return (
         <div className="chat__main">
             {

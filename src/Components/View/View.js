@@ -101,7 +101,8 @@ function View() {
           users: [`${user.uid}`, `${sellerDetails.id}`],
           user1: `${userDetails.username}`,
           user2: `${sellerDetails.username}`,
-          item:data.title
+          item:data.title,
+          itemId:productId
         }).then(history.push(`/chat/${chatId}`))
       } else {
         history.push(`/chat/${docId[0]}`)
@@ -116,7 +117,7 @@ function View() {
     setImages(img)
     }
   }
-  console.log(images)
+ // console.log(data)
 
   return (
 
@@ -153,6 +154,10 @@ function View() {
         <div className="item__productDescription">
           <div>
             <p className="item__price">&#36; {data.price} </p>
+            {data?.traded?(<>
+              <button style={{backgroundColor:"red"}} className="item__chatBtn">Sold</button>
+         
+            </>):(<></>)}
             <span>{data.title}</span>
             <p>{data.subCategory}</p>
             <p>I want to my {data.title} trade for</p>

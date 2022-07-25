@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className="footerParentDiv">
       <div className="footer__banner">
-        <img src="https://statics.olx.in/external/base/img/phone-app.webp" alt="" />
+        <img src="https://www.letsnurture.com/wp-content/themes/letsnutrure/landing-asset/img/kijiji_ln.png" alt="" height={200} />
         <div className="footerBanner__content">
           <h3>TRY THE SWOP AND TOP APP</h3>
           <span>

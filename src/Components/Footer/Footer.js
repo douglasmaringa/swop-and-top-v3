@@ -29,20 +29,14 @@ function Footer() {
           <span>Bulawayo</span>
           <span>Victoria Falls</span>
         </div>
-        <div className="footer__cards" >
-          <span className="heading">TRENDING LOCATIONS</span>
-          <span>Harare</span>
-          <span>Gweru</span>
-          <span>Bulawayo</span>
-          <span>Victoria Falls</span>
-        </div>
+       
         <div className="footer__cards">
           <span className="heading">ABOUT US</span>
-          <span>About Swop N Top</span>
+          <span>About Swop & Top</span>
           <span>Careers</span>
           <span>Contact Us</span>
-          <span>Swop N Top People</span>
-          <span>Waah Jobs</span>
+          <span>Swop & Top People</span>
+          
         </div>
         <div className="footer__cards">
           <span className="heading">Swop N Top</span>
@@ -54,7 +48,7 @@ function Footer() {
           <div>
             <span className="heading">FOLLOW US</span>
             <div className="footerSocial__icons">
-              <i className="bi bi-facebook"></i>
+              <a style={{marginRight:'10px'}} href="https://www.facebook.com/swapandtops/"><i className="bi bi-facebook"></i></a>
               <i className="bi bi-instagram"></i>
               <i className="bi bi-twitter"></i>
               <i className="bi bi-youtube"></i>

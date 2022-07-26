@@ -117,6 +117,25 @@ function View() {
     setImages(img)
     }
   }
+
+  const favClick = () => {
+    if (location.pathname === '/myfavorites') {
+      db.collection('users').doc(`${user.uid}`).collection('favorites').doc(`${productId}`).delete()
+    } else {
+
+      db.collection('users').doc(`${user.uid}`).collection('favorites').doc(`${productId}`).set({
+        title: data.title,
+        description: data.description,
+        price: data.price,
+        category: data.category,
+        subCategory: data.subCategory,
+        url: data.url,
+        userId: user.uid,
+        date: data.date,
+      });
+    }
+    alert("saved")
+  }
  // console.log(data)
 
   return (
@@ -153,7 +172,18 @@ function View() {
        
         <div className="item__productDescription">
           <div>
-            <p className="item__price">&#36; {data.price} </p>
+            <div style={{display:"flex"}}>
+            <p style={{marginTop:"10px"}} className="item__price">&#36; {data.price} </p>
+           {
+            user?.uid?(<>
+             <div style={{marginLeft:"30px"}} className="card__favorite" onClick={favClick} >
+            <i className={"bi bi-heart-fill card__heart"}></i>
+    
+            </div>
+            </>):(<></>)
+           }
+           
+            </div>
             {data?.traded?(<>
               <button style={{backgroundColor:"red"}} className="item__chatBtn">Sold</button>
          

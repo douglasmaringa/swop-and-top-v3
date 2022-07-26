@@ -100,7 +100,7 @@ const Posts = () => {
           !loading && !isEmpty && <button className="post__loadmoreBtn" onClick={fetchMore}>Load More</button>
         }
         {
-          isEmpty && <h5 className="post__loadmoreEnd">You have reached the end of world!!!</h5>
+          isEmpty && <h5 className="post__loadmoreEnd">More listings coming soon!!!</h5>
         }
       </div>
       {

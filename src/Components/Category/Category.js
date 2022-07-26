@@ -36,12 +36,14 @@ const Category = () => {
                     </div>
                 </div>
                 <div className="category__quickOptions">
-                    <span>Cars</span>
-                    <span>Mobile Phone</span>
-                    <span>For Sale:Houses & Apartments</span>
-                    <span>Laptops</span>
-                    <span>Commercial & Other Vehicles</span>
-                    <span>For Rent: House & Apartments</span>
+                <span style={{cursor:"pointer"}} onClick={() => history.push(`/search/search?laptops`)}>Laptops</span>
+                    <span style={{cursor:"pointer"}} onClick={() => history.push(`/search/search?phones`)}>Phones</span>
+                    <span style={{cursor:"pointer"}} onClick={() => history.push(`/search/search?house`)}>Properties</span>
+                    <span style={{cursor:"pointer"}} onClick={() => history.push(`/search/search?cars`)}>Cars</span>
+                    <span style={{cursor:"pointer"}} >Customer Service</span>
+                    <span style={{cursor:"pointer"}} > Todays deals
+</span>
+                
                 </div>
             </div>
             <Modal

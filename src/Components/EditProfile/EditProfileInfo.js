@@ -10,12 +10,16 @@ const EditProfileInfo = () => {
     const [userName, setUserName] = useState('hari');
     const [phone, setPhone] = useState('');
     const [about, setAbout] = useState()
+    const [work, setWork] = useState('');
+    const [study, setStudy] = useState('')
 
     useEffect(() => {
         db.collection("users").doc(`${user?.uid}`).onSnapshot(snapshot => {
             setUserName(snapshot?.data()?.username)
             setPhone(snapshot?.data()?.phone)
             setAbout(snapshot?.data()?.about)
+            setWork(snapshot?.data()?.work)
+            setStudy(snapshot?.data()?.study)
         })
         return () => {
 
@@ -28,7 +32,9 @@ const EditProfileInfo = () => {
         db.collection('users').doc(`${user.uid}`).update({
             username:userName,
             phone:phone,
-            about:about
+            about:about,
+            work:work,
+            study:study
         }).then(
             openModal()
         )
@@ -50,7 +56,13 @@ const EditProfileInfo = () => {
                 <textarea onChange={(e) => setAbout(e.target.value)} placeholder="About me (optional)" value={about} cols="0" rows="3"></textarea>
             </div>
             <div className="editProfile__contactInfo">
-                <h6>Contact Information</h6>
+                <h6>History Information</h6>
+                <input onChange={(e) => setWork(e.target.value)} type="text" value={work} placeholder="Work do you Work" />
+                <input onChange={(e) => setStudy(e.target.value)} type="text" value={study} placeholder="Where did you go to School"/>
+                
+            </div>
+            <div className="editProfile__contactInfo">
+                <h6>Phone Number</h6>
                 <input onChange={(e) => setPhone(e.target.value)} type="number" value={phone} />
                 <span>{user?.email}</span>
             </div>

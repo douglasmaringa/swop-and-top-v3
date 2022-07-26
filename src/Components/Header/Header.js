@@ -96,7 +96,7 @@ function Header() {
       <div className="product__SearchContainer">
         <form className="productSearch" onSubmit={handleSearch} action="">
           <input className="productSearch__input"
-           value={locationSearch} placeholder="Search for items.." onChange={e => setLocationSearch(e.target.value)}
+           value={locationSearch} placeholder="Search for cars, properties, phones.." onChange={e => setLocationSearch(e.target.value)}
             type="text"
            
           />

@@ -7,6 +7,7 @@ import Header from "../Components/Header/Header"
 import { AuthContext } from "../store/Context";
 import "./ChatPage.css"
 
+
 const ChatPage = () => {
     const { user } = useContext(AuthContext);
     const { chatId } = useParams();
@@ -26,15 +27,19 @@ const ChatPage = () => {
 
     return (
         <div className="chat__page">
-            <header className="create__header">
-                <div onClick={() => history.goBack()} className="createBack__icon">
+            <Header />
+           {/* <header className="create__header">
+            <div onClick={() => history.goBack()} className="createBack__icon">
                     <i className="bi bi-arrow-left"></i>
                 </div>
                 <div onClick={() => history.push('/')} className="create__brandName">
                    <h3>Swap N Top</h3>
                 </div>
-            </header>
+            </header>*/}
             <div className="chatPage__main">
+            <div onClick={() => history.goBack()} className="createBack__icon">
+                    <i className="bi bi-arrow-left"></i>
+                </div>
                 <div className="chatPage__container">
                     <div className={(chatId !== 'chatid') ? 'allChat__only chatPage__allChat' : 'chatPage__allChat'}>
                         <AllChat />

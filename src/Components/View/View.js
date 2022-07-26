@@ -5,7 +5,7 @@ import { AuthContext } from '../../store/Context';
 import './View.css';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
-import ReactWhatsapp from 'react-whatsapp';
+import {FacebookShareButton,WhatsappShareButton,WhatsappIcon,FacebookIcon} from "react-share";
 import Map from './Map';
 
 
@@ -161,8 +161,22 @@ function View() {
             <span>{data.title}</span>
             <p>{data.subCategory}</p>
             <p>I want to my {data.title} trade for</p>
+           
             <p>{data.exchange}</p>
             <span>{date}</span>
+            <div style={{display:"flex",marginTop:"40px"}}>
+              <h5>Share On</h5>
+              <div style={{marginLeft:"10px"}}>
+            <WhatsappShareButton url={`https://www.swapntop.com/item/${productId}`}>
+            <WhatsappIcon size={32} round={true} /> 
+            </WhatsappShareButton>
+            </div>
+            <div style={{marginLeft:"10px"}}>
+            <FacebookShareButton url={`https://www.swapntop.com/item/${productId}`}>
+            <FacebookIcon size={32} round={true} /> 
+            </FacebookShareButton>
+            </div>
+            </div>
           </div>
           <div ref={copyRef} className="item__share">
             <i className="bi bi-share item__shareLink" onClick={handleCopy}></i>

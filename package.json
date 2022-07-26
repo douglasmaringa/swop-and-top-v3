@@ -23,6 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-search-box": "^2.0.2",
+    "react-share": "^4.4.0",
     "react-spinners": "^0.11.0",
     "react-whatsapp": "^0.2.1",
     "uuid": "^3.4.0",

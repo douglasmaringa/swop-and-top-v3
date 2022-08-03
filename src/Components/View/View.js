@@ -190,9 +190,8 @@ function View() {
             </>):(<></>)}
             <span>{data.title}</span>
             <p>{data.subCategory}</p>
-            <p>I want to my {data.title} trade for</p>
-           
-            <p>{data.exchange}</p>
+            <p>I want to my {data.title} for {data.exchange}</p>
+          
             <span>{date}</span>
             <div style={{display:"flex",marginTop:"40px"}}>
               <h5>Share On</h5>
@@ -207,6 +206,28 @@ function View() {
             </FacebookShareButton>
             </div>
             </div>
+            {(() => {
+        switch (data?.category) {
+          case "Cars":   return (<>
+          <br/>
+          <h5>Car Properties</h5>
+          <p>Make: {data.make}</p>
+          <p>Mileage: {data.milage}</p>
+          <p>Model: {data.model}</p>
+          <p>Year: {data.year}</p>
+                       </>);
+        case "House":   return (<>
+           <br/>
+          <h5>House Properties</h5>
+          <p>Size: {data.size}m²</p>             </>);
+          
+          default:      return (<>
+          
+             
+            </>);
+        }
+      })()}                
+       
           </div>
           <div ref={copyRef} className="item__share">
             <i className="bi bi-share item__shareLink" onClick={handleCopy}></i>

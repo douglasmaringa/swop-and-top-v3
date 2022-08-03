@@ -321,11 +321,10 @@
   font-family: 'Flexo';
   font-size: 12px;
   margin: 0 auto;
-  height: 200px;
-  min-height: 560px;
-  max-height: 200px;
+  height: 100px;
+  min-height: 260px;
+  max-height: 100px;
   width: 300px;
-  height: 200px;
   margin: 0 auto;
   top: 13%;
   left: 0;

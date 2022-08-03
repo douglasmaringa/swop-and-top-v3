@@ -21,12 +21,12 @@ const AllChat = () => {
   useEffect(() => {
     if (user) {
       db.collection("chat").where("users", "array-contains", `${user.uid}`).onSnapshot(res => {
-
+       
         const allChats = res.docs.map((usr) => {
           return {
             user1: usr.data().user1,
             user2: usr.data().user2,
-            id: usr.id
+            id: usr.id,
           }
         })
         setUserChats(allChats);
@@ -38,14 +38,15 @@ const AllChat = () => {
     }
   }, [user])
 
-
+  
   return (
     <div className="allChat">
       {
         userChats.map(userChat => {
           return (
             <div className="allChat__container" onClick={() => history.push(`/chat/${userChat.id}`)} key={userChat.id}>
-              {((userChat.user1 === userDetails.username) || (userChat.user1 === user.displayName)) ? <h5 className="allChat__text">{userChat.user2}</h5> : <h5 className="allChat__text">{userChat.user1}</h5>}
+               {((userChat.user1 === userDetails.username) || (userChat.user1 === user.displayName)) ? <h5 className="allChat__text">{userChat.user2}</h5> : <h5 className="allChat__text">{userChat.user1}</h5>}
+   
             </div>
           )
         })

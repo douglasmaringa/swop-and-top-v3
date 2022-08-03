@@ -125,12 +125,12 @@ function Header() {
            
 {
             notifications?(<>
-              <i onClick={toggleModal} style={{color:"red"}} className="bi bi-bell header__notification"></i>
+              <i onClick={toggleModal} style={{color:"red"}} className="bi bi-bell header__notification">{notifications.length}</i>
                                        
                                         {
                                            showModal?(<><div class="modal-footer-small">
                                            <div class="ui-modal-body">
-                                           <button style={{color:"white",fontWeight:"700",width:"50px",marginLeft:"auto",backgroundColor:"#2196F3"}} onClick={()=>{toggleModal()}}>close</button>
+                                           <button style={{color:"white",fontWeight:"700",borderRadius:"20%",width:"50px",marginLeft:"auto",backgroundColor:"#2196F3"}} onClick={()=>{toggleModal()}}>close</button>
                                               <h5 style={{marginLeft:"10px",marginTop:"20px"}}>Notifications</h5>
                                                {
                                                 notifications?.map((e)=>(

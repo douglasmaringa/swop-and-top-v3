@@ -54,6 +54,8 @@ const Chat = () => {
                     hour: message.data().createdAt.toDate().toLocaleString('en-IN', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true, day: 'numeric', month: 'numeric', year: 'numeric' }),
                 }
             })
+            
+              
             setMessages(allMessages)
         })
 
@@ -161,7 +163,8 @@ const Chat = () => {
     
     }
 
-  console.log(item)
+    
+  console.log(otherPreson)
     return (
         <div className="chat__main">
             {
@@ -230,6 +233,7 @@ const Chat = () => {
                     <div className="chat__messageContainer">
                         {
                             messages.map(message => {
+                                
                                 return (
                                     <div key={message.id} className={(message.sender === user.uid) ? "chat__message chat__messageSend" : "chat__message chat__messageReceive"}>
                                         <p className="chat__messageText">{message.text}</p>

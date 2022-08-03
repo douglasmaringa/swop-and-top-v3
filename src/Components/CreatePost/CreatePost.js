@@ -23,6 +23,12 @@ const CreatePost = ({ category, subCategory, setSubCategory, }) => {
   const[long,setLong]=useState("")
   const[city,setCity]=useState("")
   
+  const[milage,setMilage]=useState("")
+  const[make,setMake]=useState("")
+  const[model,setModel]=useState("")
+  const[year,setYear]=useState("")
+  const[size,setSize]=useState("")
+
   const[load,setLoad]=useState(false)
 
     //useRefs
@@ -79,6 +85,63 @@ const upload2 = (e)=>{
 
     //functions
     const handleSubmit = () => {
+        if(category == "Cars"){
+            firebasestorage.ref(`/image/${uuidv4()}-${image?.name}`).put(image).then(({ ref }) => {
+                ref.getDownloadURL().then((url) => {
+                    db.collection('products').add({
+                        title: titleRef?.current.value,
+                        description: descriptionRef?.current.value,
+                        exchange:exchange,
+                        price: priceRef?.current.value,
+                        lat: lat,
+                        long: long,
+                        city: city,
+                        category,
+                        subCategory,
+                        url,
+                        userId: user.uid,
+                        date: new Date(),
+                        phone:userDetails.phone,
+                        username: userDetails.username,
+                        images:[url,image2,image3],
+                        milage,
+                        make,
+                        model,
+                        year
+                       
+                    });
+                    alert('Ad Posted Successfully')
+                    history.push('/')
+                })
+            })
+        }else if(category == "House"){
+            firebasestorage.ref(`/image/${uuidv4()}-${image?.name}`).put(image).then(({ ref }) => {
+                ref.getDownloadURL().then((url) => {
+                    db.collection('products').add({
+                        title: titleRef?.current.value,
+                        description: descriptionRef?.current.value,
+                        exchange:exchange,
+                        price: priceRef?.current.value,
+                        lat: lat,
+                        long: long,
+                        city: city,
+                        category,
+                        subCategory,
+                        url,
+                        userId: user.uid,
+                        date: new Date(),
+                        phone:userDetails.phone,
+                        username: userDetails.username,
+                        images:[url,image2,image3],
+                        size:size
+                       
+                    });
+                    alert('Ad Posted Successfully')
+                    history.push('/')
+                })
+            })
+
+        }else{
         firebasestorage.ref(`/image/${uuidv4()}-${image?.name}`).put(image).then(({ ref }) => {
             ref.getDownloadURL().then((url) => {
                 db.collection('products').add({
@@ -96,7 +159,8 @@ const upload2 = (e)=>{
                     date: new Date(),
                     phone:userDetails.phone,
                     username: userDetails.username,
-                    images:[url,image2,image3]
+                    images:[url,image2,image3],
+                    
                    
                 });
                 alert('Ad Posted Successfully')
@@ -104,7 +168,8 @@ const upload2 = (e)=>{
             })
         })
     }
-    console.log(exchange)
+    }
+    console.log(category)
     
     return (
         <div className="post__container">
@@ -121,11 +186,11 @@ const upload2 = (e)=>{
                 <label htmlFor="">What do you want to trade in exchange for your item*</label>
                 <select onChange={(e)=>{setExchange(e.target.value)}} id="cars">
                 <option value="---">----------</option>
-  <option value="swap">Straight Swap</option>
-  <option value="cash">Cash Only</option>
-  <option value="swapntop">Swap And Top</option>
-  <option value="offer">Make Me An Offer</option>
-</select>
+                <option value="swap">Straight Swap</option>
+                <option value="cash">Cash Only</option>
+                <option value="swapntop">Swap And Top</option>
+                <option value="offer">Make Me An Offer</option>
+                </select>
                 <br/>
                 <label >Description*</label>
                 <textarea ref={descriptionRef} name="" id="" cols="20" rows="3"></textarea>
@@ -135,6 +200,39 @@ const upload2 = (e)=>{
                 <label>Price*</label>
                 <input ref={priceRef} type="number" name="" id="" />
             </div>
+            <div className="post__price">
+            {(() => {
+        switch (category) {
+          case "Cars":   return (<>
+           <h5>Car Properties</h5>
+          <label htmlFor="">Milage*</label>
+          <input value={milage} onChange={(e)=>{setMilage(e.target.value)}} type="text" name="" id="" />
+           
+                <br/>  
+                <label htmlFor="">Make*</label>
+          <input value={make} onChange={(e)=>{setMake(e.target.value)}} type="text" name="" id="" />
+           <br/>
+           <label htmlFor="">Model*</label>
+          <input value={model} onChange={(e)=>{setModel(e.target.value)}} type="text" name="" id="" />
+          <br/>
+           <label htmlFor="">Year*</label>
+          <input value={year} onChange={(e)=>{setYear(e.target.value)}} type="text" name="" id="" />
+           
+                           </>);
+        case "House":   return (<>
+        <h5>House Properties</h5>
+           <label htmlFor="">Size in m²*</label>
+          <input value={size} onChange={(e)=>{setSize(e.target.value)}} type="text" name="" id="" />
+           
+                <br/>               </>);
+         
+          default:      return (<>
+          
+             
+            </>);
+        }
+      })()}                
+       </div>
             <div className="post__photo">
                 <h5>UPLOAD PHOTO</h5>
                 <img width="200px" max-height="400px" src={image && URL.createObjectURL(image)} alt="" />
@@ -142,8 +240,8 @@ const upload2 = (e)=>{
                     <input type="file" onChange={(e) => setImage(e.target.files[0])} class="custom-file-input" id="inputGroupFile02" />
                     <label className="custom-file-label" htmlfor="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
                 </div>
-<br/>            
-<img width="200px" max-height="400px" src={image2} alt="" />
+                <br/>            
+                <img width="200px" max-height="400px" src={image2} alt="" />
                
                 <div class="custom-file">
                     <input type="file" onChange={(e) => upload(e)} class="custom-file-input" id="inputGroupFile02" />

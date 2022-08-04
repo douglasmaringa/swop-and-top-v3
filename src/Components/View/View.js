@@ -162,38 +162,84 @@ function View() {
  }
 
   return (
+     <>
+     <div className='product-new'>
 
-    <div className="item__container">
+      <div style={{display:"flex",flexDirection:"column"}}>
       <span>{data.category + ' / ' + data.subCategory}</span>
-      <div className="item__parentDiv">
-        <div className="item__img" style={{"display":"grid","gridTemplateColumns":"1fr 100px"}}>
-          <div>
-          <img
-            src={images}
-            alt="error loading"
-           width="100%"
-           style={{backgroundSize:"cover"}}
-          />
-          </div>
-          <div>
-          {
+        <div style={{maxHeight:"450px",margin:"auto"}}>
+        <img style={{borderRadius:"10px",maxWidth:"100%",maxHeight:"100%",objectFit: "contain"}} src={images} alt=""/>
+
+        </div>
+       
+        <div style={{borderRadius:"10px",margin:"auto",border:"solid",borderColor:"gray",borderWidth:"1px",marginTop:"5px",padding:"5px"}}>
+        {
             data?.images?.length > 0?(<>
             {data?.images.map((e)=>(
-              <div onClick={()=>{setImages(e)}} className='img-selector' style={{marginLeft:"10px",cursor:"pointer"}}>
-              <img
-            src={e}
-            width={100}
-            height={100}
-            alt="error loading"
-          />
+              <div onClick={()=>{setImages(e)}} className='' style={{display:"flex",cursor:"pointer"}}>
+               <div style={{display:"flex",marginTop:"10px"}}>
+              <img  style={{borderRadius:"10px"}} src={e} alt="" height={50} width={60} />
+              </div>
               </div>
             ))}
             </>):(<></>)
           }
+             
+        </div>
+
+        <div style={{marginTop:"10px"}} className="item__moreInfo">
+          <h5>Description</h5>
+          <p>{data.description}</p>
+        </div>
+
+      </div>
+
+
+      <div style={{display:"flex",flexDirection:"column",marginLeft:"10px",marginTop:"23px"}}>
+        <div style={{padding:"10px"}}>
+          <div style={{backgroundColor:"#F47920",borderRadius:"10px",padding:"5px"}}>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white"}}>Details</h5>
           </div>
+          {(() => {
+        switch (data?.category) {
+          case "Cars":   return (<>
+              <div style={{borderTop:"solid",borderTopColor:"white",borderTopWidth:"1px",marginTop:"1px",backgroundColor:"#27343F",padding:"5px",display:"flex"}}>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",fontWeight:"lighter"}}>Make</h5>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",marginLeft:"auto",fontWeight:"lighter"}}>{data.make}</h5>
            </div>
-       
-        <div className="item__productDescription">
+
+           <div style={{backgroundColor:"#1C2935",padding:"5px",display:"flex"}}>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",fontWeight:"lighter"}}>Mileage</h5>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",marginLeft:"auto",fontWeight:"lighter"}}>{data.milage}</h5>
+           </div>
+
+           <div style={{backgroundColor:"#27343F",padding:"5px",display:"flex"}}>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",fontWeight:"lighter"}}>Model</h5>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",marginLeft:"auto",fontWeight:"lighter"}}>{data.model}</h5>
+           </div>
+
+           <div style={{backgroundColor:"#1C2935",padding:"5px",display:"flex"}}>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",fontWeight:"lighter"}}>Year</h5>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",marginLeft:"auto",fontWeight:"lighter"}}>{data.year}</h5>
+           </div>
+
+                       </>);
+        case "House":   return (<>
+            <div style={{borderTop:"solid",borderTopColor:"white",borderTopWidth:"1px",marginTop:"1px",backgroundColor:"#27343F",padding:"5px",display:"flex"}}>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",fontWeight:"lighter"}}>Size</h5>
+            <h5 style={{marginLeft:"5px",marginTop:"5px",fontWeight:"700",color:"white",marginLeft:"auto",fontWeight:"lighter"}}>{data.size}m²</h5>
+           </div>          </>);
+          
+          default:      return (<>
+          
+             
+            </>);
+        }
+      })()}                
+          
+        </div>
+
+        <div className="item__productDescription" style={{marginTop:"10px"}}>
           <div>
             <div style={{display:"flex"}}>
             <p style={{marginTop:"10px"}} className="item__price">&#36; {data.price} </p>
@@ -208,7 +254,7 @@ function View() {
            
             </div>
             {data?.traded?(<>
-              <button style={{backgroundColor:"red"}} className="item__chatBtn">Sold</button>
+              <button style={{backgroundColor:"#F47920"}} className="item__chatBtn">Sold</button>
          
             </>):(<></>)}
             <span>{data.title}</span>
@@ -229,38 +275,55 @@ function View() {
             </FacebookShareButton>
             </div>
             </div>
-            {(() => {
-        switch (data?.category) {
-          case "Cars":   return (<>
-          <br/>
-          <h5>Car Properties</h5>
-          <p>Make: {data.make}</p>
-          <p>Mileage: {data.milage}</p>
-          <p>Model: {data.model}</p>
-          <p>Year: {data.year}</p>
-                       </>);
-        case "House":   return (<>
-           <br/>
-          <h5>House Properties</h5>
-          <p>Size: {data.size}m²</p>             </>);
-          
-          default:      return (<>
-          
-             
-            </>);
-        }
-      })()}                
-       
-          </div>
+             </div>
           <div ref={copyRef} className="item__share">
             <i className="bi bi-share item__shareLink" onClick={handleCopy}></i>
             <div className="item__tooltipText">{copy}</div>
           </div>
         </div>
+
+        <div className="item__sellerDescription" style={{marginTop:"10px"}}>
+          <p>Seller description</p>
+          <div className="item__sellerImageName">
+            <img src={sellerDetails.photourl} alt="img" />
+            <p>
+              {
+                (user?.uid === sellerDetails.id) ?
+                  <p onClick={() => history.push('/myProfile')} style={{ margin: 0 }} id="Link" >{sellerDetails.username}</p>
+                  :
+                  <p onClick={() => history.push(`/profile/${sellerDetails.id}`)} id="Link" style={{ margin: 0 }} >{sellerDetails.username}</p>
+              }
+              <span style={{ fontSize: 14, fontWeight: 400 }}>Member since {sellerDetails?.createdAt?.toDate().toLocaleString('en-IN', { month: 'short', year: 'numeric' })}</span>
+              <br/>
+              <span style={{ fontSize: 14, fontWeight: 400 }}>Lives in {data.city}</span>
+            
+            </p>
+            <i className="bi bi-chevron-right"></i>
+          </div>
+          
+          {
+            (user?.uid === sellerDetails.id) ?
+              <button onClick={handleChatClick} disabled className="item__chatBtn">Ask questions your self</button>
+              :
+              <button onClick={handleChatClick} className="item__chatBtn">Chat to Buyer</button>
+          }
+         
+          
+        
+        </div>
+      </div>
+     </div>
+
+    <div className="item__container">
+     
+      <div className="item__parentDiv">
+       
+       
+        
         
         <div className="item__moreInfo">
-          <h5>Description</h5>
-          <p>{data.description}</p>
+          <h5>Reviews</h5>
+          
             {
               comments.map((e)=>(
                 <>
@@ -414,49 +477,11 @@ function View() {
         </div>
 
        
-        <div className="item__sellerDescription">
-          <p>Seller description</p>
-          <div className="item__sellerImageName">
-            <img src={sellerDetails.photourl} alt="img" />
-            <p>
-              {
-                (user?.uid === sellerDetails.id) ?
-                  <p onClick={() => history.push('/myProfile')} style={{ margin: 0 }} id="Link" >{sellerDetails.username}</p>
-                  :
-                  <p onClick={() => history.push(`/profile/${sellerDetails.id}`)} id="Link" style={{ margin: 0 }} >{sellerDetails.username}</p>
-              }
-              <span style={{ fontSize: 14, fontWeight: 400 }}>Member since {sellerDetails?.createdAt?.toDate().toLocaleString('en-IN', { month: 'short', year: 'numeric' })}</span>
-            </p>
-            <i className="bi bi-chevron-right"></i>
-          </div>
-          
-          {
-            (user?.uid === sellerDetails.id) ?
-              <button onClick={handleChatClick} disabled className="item__chatBtn">Ask questions your self</button>
-              :
-              <button onClick={handleChatClick} className="item__chatBtn">Chat to Buyer</button>
-          }
-         
-          
         
-        </div>
-        <div className="item__location">
-          <p>Posted in {data?.city}</p>
-          
-         
-          {
-            data?.lat?(<>
-             <Map lat={JSON.parse(data?.lat)} long={JSON.parse(data?.long)}/>
-             
-            </>):(<></>)
-
-        }
-         
-          </div>
           
       </div>
     </div>
-
+    </>
   );
 }
 export default View;

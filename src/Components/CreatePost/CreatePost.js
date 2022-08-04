@@ -257,9 +257,12 @@ const upload2 = (e)=>{
                     <label className="custom-file-label" htmlfor="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
                 </div>
             </div>
-            <div className="post__location">
+         <div className="post__location">
+             
                 <h5>CONFIRM YOUR LOCATION</h5>
+                 
                 <div>
+                     {/* 
                 <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={"pk.eyJ1IjoiZG91Z2xhc21hcmluZ2EiLCJhIjoiY2twYzZid2kzMWF1eDJ1cDc1dmo0NmswdCJ9.AWID9iqWzNnDlKJI-vH90Q"}
@@ -269,6 +272,7 @@ const upload2 = (e)=>{
       
       >
       </ReactMapGL>
+      */} 
       <div className="post__price">
                
                 <label>City</label>

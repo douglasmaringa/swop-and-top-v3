@@ -1,17 +1,20 @@
 import { useContext, useEffect, useState } from 'react';
 import ReactModal from 'react-modal';
 import db from '../../firebase';
+import { useHistory } from "react-router";
 import { AuthContext } from '../../store/Context';
 import './EditProfileInfo.css'
 
 const EditProfileInfo = () => {
     const { user } = useContext(AuthContext);
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [userName, setUserName] = useState('hari');
+    const [userName, setUserName] = useState('');
     const [phone, setPhone] = useState('');
     const [about, setAbout] = useState()
     const [work, setWork] = useState('');
     const [study, setStudy] = useState('')
+
+    const history = useHistory();
 
     useEffect(() => {
         db.collection("users").doc(`${user?.uid}`).onSnapshot(snapshot => {
@@ -29,7 +32,7 @@ const EditProfileInfo = () => {
 
 
     const handleSubmitEdit = () => {
-        db.collection('users').doc(`${user.uid}`).update({
+        db.collection('users').doc(`${user?.uid}`).update({
             username:userName,
             phone:phone,
             about:about,
@@ -37,7 +40,11 @@ const EditProfileInfo = () => {
             study:study
         }).then(
             openModal()
+           
         )
+        history.push("/")
+       
+        
     }
     function openModal() {
         setIsOpen(true);

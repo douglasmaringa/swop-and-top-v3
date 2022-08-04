@@ -8,7 +8,7 @@ function Footer() {
       <div className="footer__banner">
         <img src="https://www.letsnurture.com/wp-content/themes/letsnutrure/landing-asset/img/kijiji_ln.png" alt="" height={200} />
         <div className="footerBanner__content">
-          <h3>TRY THE SWOP AND TOP APP</h3>
+          <h3>TRY THE SWOP AND Sell APP</h3>
           <span>
             Buy, sell and find just about anything using the app on your mobile.
           </span>
@@ -32,14 +32,14 @@ function Footer() {
        
         <div className="footer__cards">
           <span className="heading">ABOUT US</span>
-          <span>About Swop & Top</span>
+          <span>About Swop & Sell</span>
           <span>Careers</span>
           <span>Contact Us</span>
-          <span>Swop & Top People</span>
+          <span>Swop & Sell People</span>
           
         </div>
         <div className="footer__cards">
-          <span className="heading">Swop N Top</span>
+          <span className="heading">Swop N Sell</span>
           <span>Help</span>
           <span>Sitemap</span>
           <span>Legal & Privacy information</span>
@@ -62,7 +62,7 @@ function Footer() {
       </div>
       <div className="footer">
         <p>Other Countries Namibia - South Africa - Nigeria</p>
-        <p>Swop N Top in Zimbabwe. © 2022 Swop N Top</p>
+        <p>Swop N Sell in Zimbabwe. © 2022 Swop N Sell</p>
       </div>
     </div>
   );

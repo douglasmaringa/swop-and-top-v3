@@ -6,7 +6,7 @@ function Banner() {
       <div className="bannerChildDiv">
         <div className="banner">
           <img
-            src="../../../Images/banner copy2.png"
+            src="https://i.ibb.co/YkLFmMj/banner-copy2-1.png"
             alt=""
           />
         </div>

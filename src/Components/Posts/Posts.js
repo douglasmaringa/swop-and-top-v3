@@ -4,7 +4,7 @@ import './Post.css';
 import db from '../../firebase';
 import Cards from '../Cards/Cards';
 import PacmanLoader from "react-spinners/PacmanLoader";
-
+import GoogleAd from '../../Google';
 
 
 const Posts = () => {
@@ -85,6 +85,7 @@ const Posts = () => {
       </div>
       <div className="post__recommendations">
         <h4>Fresh recommendations</h4>
+        
         <div className="post__freshCards">
           {
             products.map(product => {

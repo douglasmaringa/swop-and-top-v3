@@ -321,14 +321,14 @@ function View() {
        
         
         
-        <div className="item__moreInfo">
+        <div style={{marginLeft:"10px",marginTop:"10px"}}>
           <h5>Reviews</h5>
           
             {
               comments.map((e)=>(
                 <>
                 {
-              comments?(<>
+              comments?(<div style={{border:"solid",borderColor:"gray",borderWidth:"1px",padding:"5px"}}>
                {(() => {
         switch (e.stars) {
           case "1":   return (<>
@@ -450,7 +450,7 @@ function View() {
         }
       })()}
        
-              </>):(<></>)
+              </div>):(<></>)
             }
 
                 </>
@@ -458,7 +458,7 @@ function View() {
             }
             {
               userDetails?(<>
-               <h5>Leave a Review</h5>
+               <h5 style={{marginTop:"10px"}}>Leave a Review</h5>
            <label htmlFor="">Stars*</label>
            <br/>
           <input value={stars} onChange={(e)=>{setStars(e.target.value)}} type="number" name="" id="" />

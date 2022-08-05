@@ -6,7 +6,8 @@
     flex-direction: column;
     border: 1px solid rgba(4, 37, 79, 0.152);
     border-radius: 5px;
-    background-color: white;
+    background-color: #001F35;
+    color: white;
     
   }
   .card__container:hover .card__image > img {

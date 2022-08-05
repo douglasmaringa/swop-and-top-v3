@@ -242,7 +242,7 @@ function View() {
         <div className="item__productDescription" style={{marginTop:"10px"}}>
           <div>
             <div style={{display:"flex"}}>
-            <p style={{marginTop:"10px"}} className="item__price">&#36; {data.price} </p>
+            <p style={{marginTop:"10px",color:"white"}} className="item__price">&#36; {data.price} </p>
            {
             user?.uid?(<>
              <div style={{marginLeft:"30px"}} className="card__favorite" onClick={favClick} >
@@ -289,13 +289,13 @@ function View() {
             <p>
               {
                 (user?.uid === sellerDetails.id) ?
-                  <p onClick={() => history.push('/myProfile')} style={{ margin: 0 }} id="Link" >{sellerDetails.username}</p>
+                  <p onClick={() => history.push('/myProfile')} style={{ margin: 0 ,color:"white"}} id="Link" >{sellerDetails.username}</p>
                   :
-                  <p onClick={() => history.push(`/profile/${sellerDetails.id}`)} id="Link" style={{ margin: 0 }} >{sellerDetails.username}</p>
+                  <p onClick={() => history.push(`/profile/${sellerDetails.id}`)} id="Link" style={{ margin: 0 ,color:"white"}} >{sellerDetails.username}</p>
               }
-              <span style={{ fontSize: 14, fontWeight: 400 }}>Member since {sellerDetails?.createdAt?.toDate().toLocaleString('en-IN', { month: 'short', year: 'numeric' })}</span>
+              <span style={{ fontSize: 14, fontWeight: 400,color:"white" }}>Member since {sellerDetails?.createdAt?.toDate().toLocaleString('en-IN', { month: 'short', year: 'numeric' })}</span>
               <br/>
-              <span style={{ fontSize: 14, fontWeight: 400 }}>Lives in {data.city}</span>
+              <span style={{ fontSize: 14, fontWeight: 400 ,color:"white"}}>Lives in {data.city}</span>
             
             </p>
             <i className="bi bi-chevron-right"></i>
@@ -303,9 +303,9 @@ function View() {
           
           {
             (user?.uid === sellerDetails.id) ?
-              <button onClick={handleChatClick} disabled className="item__chatBtn">Ask questions your self</button>
+              <button onClick={handleChatClick} disabled style={{backgroundColor:"#F47920",color:"#002f34"}} className="item__chatBtn">Ask questions your self</button>
               :
-              <button onClick={handleChatClick} className="item__chatBtn">Chat to Buyer</button>
+              <button onClick={handleChatClick} style={{backgroundColor:"#F47920",color:"#002f34"}} className="item__chatBtn">Chat to Buyer</button>
           }
          
           

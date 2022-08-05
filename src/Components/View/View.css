@@ -1,6 +1,7 @@
 .item__container {
   display: flex;
   flex-direction: column;
+  
 }
 .item__container > span {
   padding: 15px 40px;
@@ -254,6 +255,9 @@
     margin-left:40px;
     margin-right:50px;
     margin-top: 50px;
-    
+    background-color: #002f34;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
   }
 }

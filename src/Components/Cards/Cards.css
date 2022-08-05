@@ -8,7 +8,6 @@
     border-radius: 5px;
     background-color: #001F35;
     color: white;
-    
   }
   .card__container:hover .card__image > img {
     transform: scale(1.1);

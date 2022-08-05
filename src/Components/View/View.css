@@ -262,3 +262,8 @@
     border-radius: 10px;
   }
 }
+
+.rating-stars svg:hover{
+  color: #FFDF00;
+  cursor: pointer;
+}

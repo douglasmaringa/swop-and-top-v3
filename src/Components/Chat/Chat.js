@@ -164,7 +164,7 @@ const Chat = () => {
     }
 
     
-  console.log(otherPreson)
+  //console.log(otherPreson)
     return (
         <div className="chat__main">
             {
@@ -215,7 +215,7 @@ const Chat = () => {
                             </h4>
                     }
                     
-                    <button onClick={memory} style={{"marginLeft":'auto',padding:'10px',fontWeight:'bold',borderRadius:20}}>Finalize Trade with {item}</button>
+                    <button onClick={memory} style={{backgroundColor:"#002a2e",color:"white","marginLeft":'auto',padding:'10px',fontWeight:'bold',borderRadius:20}}>Finalize Trade with {item}</button>
                 </div>
             }
             {

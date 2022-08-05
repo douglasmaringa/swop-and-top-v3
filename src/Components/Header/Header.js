@@ -109,8 +109,8 @@ function Header() {
         {
           user?(<>
           <div onClick={() => history.push('/myads')} className="menu__section">
-                <i className="bi bi-files"></i>
-                <h5>My Ads</h5>
+                <i style={{color:"white"}} className="bi bi-files"></i>
+                <h5 style={{color:"white"}}>My Ads</h5>
 
               </div>
           </>):(<></>)

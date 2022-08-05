@@ -10,6 +10,7 @@
     row-gap: 10px;
     overflow-y: scroll;
     color: #002f34;
+    background-color: #FFCE32;
 }
 
 .allChat__container {
@@ -19,6 +20,8 @@
     border-radius: 7px;
     width: 100%;
     transition: ease-in 0.15s;
+    background-color: #002f34;
+    color: white;
     cursor: pointer;
     box-shadow: 4px 4px 8px #bbbbbb, -4px -4px 8px #eeeeee;
 }
@@ -26,6 +29,8 @@
 .allChat__container:hover {
     box-shadow: 6px 6px 7px #a9a9a9, -6px -6px 7px #e1e1e1;
     transition: ease-in 0.15s;
+    color: #FFCE32;
+   
 }
 
 .allChat__text {

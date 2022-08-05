@@ -3,13 +3,12 @@
     flex-direction: column;
     height: 100%;
     position: relative;
-    
-    
+   
 }
 .chat__header {
     padding: 10px 25px;
-    background-color: whitesmoke;
-    color: #002f34;
+    background-color: #FFCE32;
+    color: #002F34;
     box-shadow: 0px 2px 4px 0.5px rgba(186, 186, 186, 0.652);
     border-radius: 7px 7px 0px 0px;
     position: relative;
@@ -26,7 +25,7 @@
 }
 .chat__messageContainer {
     height: 100%;
-    background-color: rgb(235, 231, 231);
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -47,13 +46,13 @@
    
 }
 .chat__messageSend{
-    background-color: rgb(0, 111, 0);
+    background-color: #001416;
     border-radius: 13px 13px 0px 13px ;
     color: whitesmoke;
     align-self: flex-end;
 }
 .chat__messageReceive {
-    background-color: #18410e;
+    background-color: #002a2e;
     color: whitesmoke;
     border-radius: 0px 13px 13px 13px ;
 }

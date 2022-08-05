@@ -42,7 +42,7 @@ const Menu = () => {
         <div ref={menuRef} className="popover__container">
           <div onClick={() => setPopOn(!popOn)} className="pop__btn">
             <img className="profile__pic" src={userDetails?.photourl} alt="img" />
-            <div className={popOn ? 'menu__arrow' : "menu__arrowDown"}>
+            <div style={{backgroundColor:"white"}} className={popOn ? 'menu__arrow' : "menu__arrowDown"}>
               <Arrow></Arrow>
             </div>
           </div>
@@ -70,7 +70,7 @@ const Menu = () => {
                 <p>SwapNTop is built on trust. Help other people get to know you. Tell them about the things you like. </p>
               </div>
               <div onClick={() => history.push('/myads')} className="menu__section">
-                <i className="bi bi-files"></i>
+                <i style={{color:"white"}} className="bi bi-files"></i>
                 <h5>My Ads</h5>
               
               </div>

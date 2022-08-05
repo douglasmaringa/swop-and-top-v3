@@ -25,7 +25,7 @@ const Create = () => {
             <i className="bi bi-arrow-left"></i>
           </div>
           <div onClick={() => history.push('/')} className="create__brandName">
-           <h3>SwopNTop</h3>
+           <h3>SwopNSell</h3>
           </div>
         </header>
         <div className="create__main">
